@@ -14,7 +14,9 @@ node {
    }
    stage('Results') {
       sh "${RUN} make check"
-      junit '**/*.xml'
+      if ( fileExists( "${WORKSPACE}/**/*.xml" ) ) {
+        junit "${WORKSPACE}/**/*.xml"
+      }
       // no idea why all of the predefined variables fail in a multiline command below
       sh '''
         GIT_COMMIT="`git log --pretty=format:'%H' | head -n 1`"
