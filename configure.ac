@@ -8,6 +8,7 @@ AC_CONFIG_AUX_DIR([build-aux])
 AM_INIT_AUTOMAKE([-Wall -Werror foreign])
 
 # Checks for programs.
+AC_PROG_AR
 AC_PROG_CC
 AC_PROG_LIBTOOL
 
