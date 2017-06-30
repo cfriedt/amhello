@@ -18,6 +18,12 @@ node {
         junit "${WORKSPACE}/**/*.xml"
       }
       // no idea why all of the predefined variables fail in a multiline command below
+      //sh '''
+      //  GIT_COMMIT="`git log --pretty=format:'%H' | head -n 1`"
+      //  INSTALLDIR="amhello-${GIT_COMMIT}"
+      //  ${RUN} make DESTDIR=${WD}/${INSTALLDIR} install
+      //  ${RUN} tar cpvJf ${INSTALLDIR}.tar.xz ${INSTALLDIR}
+      //'''
       sh '''
         GIT_COMMIT="`git log --pretty=format:'%H' | head -n 1`"
         INSTALLDIR="amhello-${GIT_COMMIT}"
@@ -25,7 +31,7 @@ node {
             make DESTDIR=/home/${INSTALLDIR} install
         docker run -v ${WORKSPACE}:/home amhello:dockerfile \
             tar cpvJf ${INSTALLDIR}.tar.xz ${INSTALLDIR}
-        '''
+      '''
       archive '*.tar.xz'
    }
 }
