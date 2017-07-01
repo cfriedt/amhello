@@ -15,8 +15,8 @@ node {
    }
    stage('Results') {
       sh "${RUN} make check"
-      if ( fileExists( "${WORKSPACE}/**/*.xml" ) ) {
-        junit "${WORKSPACE}/**/*.xml"
+      if ( fileExists( "**/*.xml" ) {
+        junit "**/*.xml"
       }
       sh """
         GIT_COMMIT="`git log --pretty=format:'%H' | head -n 1`"
