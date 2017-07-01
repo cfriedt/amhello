@@ -15,7 +15,7 @@ node {
    }
    stage('Results') {
       sh "${RUN} make check"
-      if ( fileExists( "**/*.xml" ) {
+      if ( fileExists( "**/*.xml" ) ) {
         junit "**/*.xml"
       }
       sh """
