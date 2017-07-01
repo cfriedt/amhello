@@ -3,7 +3,7 @@
 
 static const char greet[] = "Hello, world!";
 
-const char *greeting() {
+char *greeting() {
     return greet;
 }
 
