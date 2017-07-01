@@ -3,7 +3,8 @@ node {
    def WD="/home"
    def RUN="docker run -v ${WORKSPACE}:${WD} ${TAG}"
    stage('Preparation') {
-      git 'https://github.com/cfriedt/amhello.git'
+      // requires Multiple Pipeline workflow
+      checkout scm
       // uses Dockerfile from forked amhello project
       sh "docker build -t ${TAG} ${WORKSPACE}"
    }
