@@ -3,7 +3,7 @@ node {
    def WD="/home"
    def RUN="docker run -v ${WORKSPACE}:${WD} ${TAG}"
    stage('Preparation') {
-      // requires Multiple Pipeline workflow
+      // requires Multibranch Pipeline workflow
       checkout scm
       // uses Dockerfile from forked amhello project
       sh "docker build -t ${TAG} ${WORKSPACE}"
@@ -15,7 +15,12 @@ node {
    }
    stage('Results') {
       sh "${RUN} make check"
-      junit "${WORKSPACE}/**/*.xml"
+      // requires Pipeline Utility Steps plugin
+      def junit_test_output = findFiles glob: '**/*.xml'
+      boolean junit_tests_exist = junit_test_output.length > 0
+      if ( junit_tests_exist ) {
+        junit '**/*.xml'
+      }
       sh """
         GIT_COMMIT="`git log --pretty=format:'%H' | head -n 1`"
         INSTALLDIR="amhello-\${GIT_COMMIT}"
