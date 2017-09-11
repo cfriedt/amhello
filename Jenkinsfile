@@ -1,12 +1,12 @@
 node {
-   def TAG="amhello:dockerfile"
+   def TAG="amhello"
    def WD="/home"
-   def RUN="docker run -v ${WORKSPACE}:${WD} ${TAG}"
+   def RUN="sudo docker run -v ${WORKSPACE}:${WD} ${TAG}"
    stage('Preparation') {
       // requires Multibranch Pipeline workflow
       checkout scm
       // uses Dockerfile from forked amhello project
-      sh "docker build -t ${TAG} ${WORKSPACE}"
+      sh "sudo docker build -t ${TAG} ${WORKSPACE}"
    }
    stage('Build') {
       sh "${RUN} autoreconf --install"
