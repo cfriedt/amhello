@@ -1,7 +1,7 @@
 node {
    def TAG="amhello"
    def WD="/home"
-   def RUN="sudo docker run -v ${WORKSPACE}:${WD} -v /var/run/docker.sock:/var/run/docker.sock ${TAG}"
+   def RUN="sudo docker run -v ${WORKSPACE}:${WD} -v /var/run/docker.sock:/var/run/docker.sock ${TAG}:latest"
    stage('Preparation') {
       // requires Multibranch Pipeline workflow
       checkout scm
