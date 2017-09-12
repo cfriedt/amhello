@@ -1,5 +1,5 @@
 node {
-   def TAG="${JOB_NAME}"
+   def TAG="${PROJECTNAME}"
    def WD="/home"
    def RUN="docker run -v ${WORKSPACE}:${WD} -v /var/run/docker.sock:/var/run/docker.sock ${TAG}:latest"
    stage('Preparation') {
