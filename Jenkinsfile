@@ -23,7 +23,7 @@ node {
       }
       sh """
         GIT_COMMIT="`git log --pretty=format:'%H' | head -n 1`"
-        INSTALLDIR="amhello-\${GIT_COMMIT}"
+        INSTALLDIR="${TAG}-\${GIT_COMMIT}"
         ${RUN} make DESTDIR=${WD}/\${INSTALLDIR} install
         ${RUN} tar cpvJf \${INSTALLDIR}.tar.xz \${INSTALLDIR}
       """
