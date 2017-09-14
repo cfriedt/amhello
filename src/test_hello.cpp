@@ -19,7 +19,7 @@ TEST(HelloTest, hi) {
 	;
 }
 
-TEST(HelloTest, hi) {
+TEST(HelloTest, bye) {
 	std::string expected_str = "Sayonara!";
 	std::string actual_str = std::string( greeting() );
 
