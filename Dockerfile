@@ -1,4 +1,4 @@
-FROM ubuntu:latest
+FROM ubuntu:xenial
 MAINTAINER Christopher Friedt "chrisfriedt@gmail.com"
 
 RUN apt-get update
