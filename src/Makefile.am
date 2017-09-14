@@ -21,8 +21,8 @@ noinst_PROGRAMS = \
 .PHONY: check
 
 check: $(TESTS)
-	@for i in $(TESTS); do \
-		echo ./$$i --gtest_output=xml:`pwd`/:$$i.xml; \
+	for i in $(TESTS); do \
+		echo "./$$i --gtest_output=xml:`pwd`/:$$i.xml"; \
 		./$$i --gtest_output=xml:`pwd`/:$$i.xml || true; \
 	done
 
