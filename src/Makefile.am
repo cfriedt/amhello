@@ -22,8 +22,9 @@ noinst_PROGRAMS = \
 
 check: $(TESTS)
 	for i in $(TESTS); do \
-		./$$i --gtest_output=xml:`pwd`:$$i.xml || true; \
+		./$$i --gtest_output=xml:.:$$i.xml || true; \
 	done
+	true
 
 #endif
 
